@@ -1,17 +1,22 @@
-import React from "react";
 import "./authentication.scss";
+
+import { auth, provider } from "/firebase-config.js";
+import { signInWithPopup } from "firebase/auth";
 
 import { FiSearch } from "react-icons/fi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
 import { FaGoogle } from "react-icons/fa";
-import { FaApple } from "react-icons/fa";
-import { IoArrowBackCircle } from "react-icons/io5";
-import { IoArrowForwardCircle } from "react-icons/io5";
-import { FaStar } from "react-icons/fa6";
-import { MdOutlineArrowForward } from "react-icons/md";
+
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 export default function SignUp() {
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider);
+    cookies.set("auth-token", result.user.refreshToken);
+    console.log(result);
+  };
   return (
     <div>
       <header>
@@ -53,7 +58,9 @@ export default function SignUp() {
           <h1>Continue with Google</h1>
           <button className="google-button">
             <FaGoogle size={18} />
-            <span className="text">Sign up with Google</span>
+            <span onClick={signInWithGoogle} className="text">
+              Sign up with Google
+            </span>
           </button>
         </div>
       </div>
