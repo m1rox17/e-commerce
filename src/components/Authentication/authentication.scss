@@ -1,0 +1,42 @@
+.sign {
+  display: flex;
+  align-items: center;
+  .sign__right {
+    margin: auto;
+    h1 {
+      font-family: "Inter", sans-serif;
+      font-size: 36px;
+      font-weight: 500;
+      letter-spacing: 4%;
+      margin-bottom: 45px;
+    }
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 70%;
+      margin-right: 15px;
+    }
+    .google-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 12px;
+      background-color: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 400;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      gap: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      margin-bottom: 40px;
+
+      &:hover {
+        background-color: #000000;
+        color: #fff;
+      }
+    }
+  }
+}

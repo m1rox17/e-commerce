@@ -1,9 +1,10 @@
 import HomePage from "./components/Home/HomePage";
+import SignUp from "./components/Authentication/SignUp";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <SignUp />
     </>
   );
 }

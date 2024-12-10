@@ -24,6 +24,10 @@ p {
   margin: 0;
 }
 
+button {
+  font-family: "Poppins", sans-serif;
+}
+
 .container {
   width: 100%;
   max-width: 1450px;
@@ -95,127 +99,6 @@ nav {
   }
   .like {
     margin-right: 10px;
-  }
-}
-
-.intro {
-  display: flex;
-  justify-content: space-between;
-  ul {
-    list-style-type: none;
-    padding: 0;
-    li {
-      margin-top: 15px;
-      a {
-        text-decoration: none;
-        color: #000;
-      }
-    }
-  }
-}
-
-.banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000;
-  color: white;
-  .banner__left {
-    margin-left: 65px;
-    .banner__title {
-      display: flex;
-      align-items: center;
-      h1 {
-        font-size: 16px;
-        font-weight: 400;
-        margin-left: 10px;
-      }
-    }
-    .bunner__text {
-      font-family: "Inter", sans-serif;
-      font-size: 48px;
-      font-weight: 600;
-      width: 70%;
-      letter-spacing: 4%;
-      margin: 20px 0px;
-    }
-    .bunner__button {
-      display: flex;
-      align-items: center;
-      font-size: 20px;
-      h1 {
-        font-size: 16px;
-        font-weight: 500;
-        margin-right: 10px;
-        text-decoration: underline;
-        padding-bottom: 5px;
-      }
-    }
-  }
-}
-
-.product {
-  margin-top: 150px;
-  .product__our {
-    font-size: 16px;
-    font-weight: 600;
-    color: $red;
-    margin-bottom: 20px;
-  }
-  .header__product {
-    display: flex;
-    justify-content: space-between;
-    font-family: "Inter", sans-serif;
-    font-size: 28px;
-    font-weight: 600;
-    letter-spacing: 4%;
-    align-items: center;
-    margin-bottom: 60px;
-  }
-  .product__img {
-    padding: 35px 70px;
-    background-color: $white;
-    border-radius: 5px;
-  }
-  .product__title {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .product__subtitle {
-    display: flex;
-    align-items: center;
-  }
-  .product__price {
-    font-size: 16px;
-    font-weight: 500;
-    color: $red;
-  }
-  .product__row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .product__col {
-    display: flex;
-    flex-direction: column;
-    margin-right: 30px;
-  }
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    padding: 0.75rem 0;
-    background-color: $red;
-    color: white;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    transition: all 0.2s ease;
-    gap: 0.5rem;
-    margin: 70px auto;
-  }
-  .product__icon {
-    cursor: pointer;
   }
 }
 
