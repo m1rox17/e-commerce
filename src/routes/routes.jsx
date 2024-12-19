@@ -3,11 +3,11 @@ import { Navigate } from "react-router-dom";
 import { auth } from "/firebase-config.js";
 import { onAuthStateChanged } from "firebase/auth";
 
-import HomePage from "../components/Home/HomePage";
-import Authentication from "../components/Authentication/Authentication";
-import Layout from "../components/Layout/Layout";
-import Wishlist from "../components/Wishlist/Wishlist";
-import NotFound from "../components/NotFound/NotFound";
+import HomePage from "../components/pages/common/Home/HomePage";
+import Authentication from "../components/pages/common/Authentication/Authentication";
+import Layout from "../components/template/Layout/Layout";
+import Wishlist from "../components/pages/user/Wishlist/Wishlist";
+import NotFound from "../components/pages/common/NotFound/NotFound";
 
 export const useRoleBasedRoutes = () => {
   const [user, setUser] = useState(null);
