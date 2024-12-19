@@ -1,14 +1,14 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
+import { CiUser } from "react-icons/ci";
 
 import "./header.scss";
 
-export default function Header() {
+export default function Header({ role }) {
   return (
     <div>
       <header>
@@ -30,17 +30,22 @@ export default function Header() {
             <li>
               <a href="#">About</a>
             </li>
-            <li>
-              <Link to="/authentication">Sign Up</Link>
-            </li>
+            {role !== "user" && (
+              <li>
+                <Link to="/authentication">Sign Up</Link>
+              </li>
+            )}
           </ul>
           <div className="searchbar">
             <input type="text" placeholder="What are you looking for?" />
             <FiSearch className="searchbar-icon" />
           </div>
           <div>
-            <IoIosHeartEmpty className="like" size={24} />
-            <GrCart size={24} />
+            <Link to="/wishlist">
+              <IoIosHeartEmpty size={24} />
+            </Link>
+            <GrCart className="cart-icon" size={24} />{" "}
+            {role === "user" && <CiUser size={24} className="user-icon" />}
           </div>
         </nav>
       </div>

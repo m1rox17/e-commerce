@@ -1,7 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import { routerList } from "./routes";
+import { useRoleBasedRoutes } from "./routes";
 
 export const MyAppRouter = () => {
-  return <RouterProvider router={createBrowserRouter(routerList)} />;
+  const routerList = useRoleBasedRoutes();
+
+  if (!routerList) {
+    return <div></div>;
+  }
+
+  const router = createBrowserRouter(routerList);
+
+  return <RouterProvider router={router} />;
 };
