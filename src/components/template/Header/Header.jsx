@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
@@ -7,8 +7,11 @@ import { GrCart } from "react-icons/gr";
 import { CiUser } from "react-icons/ci";
 
 import "./header.scss";
+import ModalAccount from "../../modal/ModalAccount";
 
 export default function Header({ role }) {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div>
       <header>
@@ -44,8 +47,15 @@ export default function Header({ role }) {
             <Link to="/wishlist">
               <IoIosHeartEmpty size={24} />
             </Link>
-            <GrCart className="cart-icon" size={24} />{" "}
-            {role === "user" && <CiUser size={24} className="user-icon" />}
+            <GrCart className="cart-icon" size={24} />
+            {role === "user" && (
+              <CiUser
+                size={24}
+                className="user-icon"
+                onClick={() => setOpenModal(true)}
+              />
+            )}
+            {openModal && <ModalAccount setOpenModal={setOpenModal} />}
           </div>
         </nav>
       </div>
