@@ -1,7 +1,8 @@
 import React from "react";
 import "./wishlist.scss";
 
-import { FaStar } from "react-icons/fa6";
+import products from "/src/data/products.json";
+import ProductsBlock from "../../../template/Products/ProductsBlock";
 
 export default function Wishlist() {
   return (
@@ -12,20 +13,17 @@ export default function Wishlist() {
           <button>Move All To Bag</button>
         </div>
         <div className="product__row">
-          <div className="product__col">
-            <img
-              className="product__img"
-              src="/src/img/DogFood.png"
-              alt="DogFood"
-            />
-            <div>
-              <h1 className="product__title">Breed Dry Dog Food</h1>
-              <div className="product__subtitle">
-                <h1 className="product__price">$100</h1>
-                <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-              </div>
+          {products.products.map((product) => (
+            <div className="product__col">
+              <ProductsBlock
+                key={product.id}
+                img={product.img}
+                name={product.name}
+                price={product.price}
+                star={product.star}
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
