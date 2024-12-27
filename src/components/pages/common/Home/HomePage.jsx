@@ -4,8 +4,10 @@ import "./home.scss";
 import { FaApple } from "react-icons/fa";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { IoArrowForwardCircle } from "react-icons/io5";
-import { FaStar } from "react-icons/fa6";
 import { MdOutlineArrowForward } from "react-icons/md";
+
+import products from "/src/data/products.json";
+import ProductsBlock from "../../../template/Products/ProductsBlock";
 
 export default function HomePage() {
   return (
@@ -70,20 +72,17 @@ export default function HomePage() {
             </div>
           </div>
           <div className="product__row">
-            <div className="product__col">
-              <img
-                className="product__img"
-                src="/src/img/DogFood.png"
-                alt="DogFood"
-              />
-              <div>
-                <h1 className="product__title">Breed Dry Dog Food</h1>
-                <div className="product__subtitle">
-                  <h1 className="product__price">$100</h1>
-                  <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
-                </div>
+            {products.products.map((product) => (
+              <div className="product__col">
+                <ProductsBlock
+                  key={product.id}
+                  img={product.img}
+                  name={product.name}
+                  price={product.price}
+                  star={product.star}
+                />
               </div>
-            </div>
+            ))}
           </div>
           <button>View All Products</button>
         </div>
