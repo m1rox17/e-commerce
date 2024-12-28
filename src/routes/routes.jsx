@@ -8,6 +8,8 @@ import Authentication from "../components/pages/common/Authentication/Authentica
 import Layout from "../components/template/Layout/Layout";
 import Wishlist from "../components/pages/user/Wishlist/Wishlist";
 import NotFound from "../components/pages/common/NotFound/NotFound";
+import ProductDetails from "../components/template/ProductDetails/ProductDetails";
+import Cart from "../components/pages/user/Cart/Cart";
 
 export const useRoleBasedRoutes = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +44,8 @@ export const useRoleBasedRoutes = () => {
         children: [
           { path: "/", element: <HomePage /> },
           { path: "wishlist", element: <Wishlist /> },
+          { path: "product", element: <ProductDetails /> },
+          { path: "cart", element: <Cart /> },
           { path: "authentication", element: <Navigate to="/" replace /> },
         ],
       },

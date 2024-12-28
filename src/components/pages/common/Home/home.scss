@@ -101,6 +101,7 @@ $red: #db4444;
   }
   .product__row {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 950px;
     margin: auto;
