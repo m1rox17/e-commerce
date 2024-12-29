@@ -1,7 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import "./Cart.scss";
 
+import { useSelector } from "react-redux";
+
 export default function Cart() {
+  const { items } = useSelector((state) => state.cart);
+  const [selectedValue, setSelectedValue] = useState("2");
+
+  const handleChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
   return (
     <div className="cart">
       <div className="container">
@@ -15,56 +23,39 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className="product__info">
-                  <img
-                    src="/src/img/Gamepad.png"
-                    alt="GP11 Shooter USB Gamepad"
-                    className="product__image"
-                  />
-                  <h1>GP11 Shooter USB Gamepad</h1>
-                </div>
-              </td>
-              <td>
-                <h1 className="product__price">$650</h1>
-              </td>
-              <td>
-                <select className="quantity__select">
-                  <option value="1">01</option>
-                  <option value="2">02</option>
-                  <option value="3">03</option>
-                </select>
-              </td>
-              <td>$650</td>
-            </tr>
-            <tr>
-              <td>
-                <div className="product__info">
-                  <img
-                    src="/src/img/Camera.png"
-                    alt="CANON EOS DSLR Camera"
-                    className="product__image"
-                  />
-                  <h1>CANON EOS DSLR Camera</h1>
-                </div>
-              </td>
-              <td>
-                <h1 className="product__price">$550</h1>
-              </td>
-              <td>
-                <select className="quantity__select">
-                  <option value="1">01</option>
-                  <option value="2" selected>
-                    02
-                  </option>
-                  <option value="3">03</option>
-                </select>
-              </td>
-              <td>$1100</td>
-            </tr>
+            {items.map((item) => (
+              <tr>
+                <td>
+                  <div className="product__info">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="product__image"
+                    />
+                    <h1>{item.name}</h1>
+                  </div>
+                </td>
+                <td>
+                  <h1 className="product__price">${item.price}</h1>
+                </td>
+                <td>
+                  <select
+                    className="quantity__select"
+                    value={selectedValue}
+                    onChange={handleChange}
+                  >
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                  </select>
+                </td>
+                <td>$650</td>
+              </tr>
+            ))}
           </tbody>
         </table>
+        <hr />
+
         <div className="cart__actions">
           <button className="return__btn">Return To Shop</button>
           <button className="update__btn">Update Cart</button>

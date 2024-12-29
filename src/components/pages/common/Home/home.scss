@@ -106,12 +106,34 @@ $red: #db4444;
     max-width: 950px;
     margin: auto;
   }
+
   .product__col {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-right: 30px;
+
+    &:hover .col__button {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  button {
+  .col__button {
+    position: absolute;
+    padding: 10px 60px;
+    background-color: $red;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    margin: 150px auto;
+    transform: translateX(-50%) translateY(10px);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .product__button {
     display: flex;
     align-items: center;
     justify-content: center;

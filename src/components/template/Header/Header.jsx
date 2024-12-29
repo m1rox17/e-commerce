@@ -47,7 +47,9 @@ export default function Header({ role }) {
             <Link to="/wishlist">
               <IoIosHeartEmpty size={24} />
             </Link>
-            <GrCart className="cart-icon" size={24} />
+            <Link to="/cart">
+              <GrCart className="cart-icon" size={24} />
+            </Link>
             {role === "user" && (
               <CiUser
                 size={24}

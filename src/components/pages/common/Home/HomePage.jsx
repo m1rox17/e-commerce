@@ -9,7 +9,15 @@ import { MdOutlineArrowForward } from "react-icons/md";
 import products from "/src/data/products.json";
 import ProductsBlock from "../../../template/Products/ProductsBlock";
 
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../../redux/Cart/cartSlice";
+
 export default function HomePage() {
+  const dispatch = useDispatch();
+
+  const handleClick = (product) => {
+    dispatch(addItem(product));
+  };
   return (
     <div>
       <div className="container">
@@ -73,18 +81,23 @@ export default function HomePage() {
           </div>
           <div className="product__row">
             {products.products.map((product) => (
-              <div className="product__col">
+              <div className="product__col" key={product.id}>
                 <ProductsBlock
-                  key={product.id}
                   img={product.img}
                   name={product.name}
                   price={product.price}
                   star={product.star}
                 />
+                <button
+                  onClick={() => handleClick(product)}
+                  className="col__button"
+                >
+                  Add to cart
+                </button>
               </div>
             ))}
           </div>
-          <button>View All Products</button>
+          <button className="product__button">View All Products</button>
         </div>
       </div>
     </div>
