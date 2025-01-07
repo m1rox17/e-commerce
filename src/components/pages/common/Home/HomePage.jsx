@@ -17,8 +17,9 @@ export default function HomePage() {
   const { items } = useSelector((state) => state.cart);
 
   const handleAddItem = (product) => {
+    const updatedItems = [...items, { ...product, count: 1 }];
     dispatch(addItem(product));
-    dispatch(syncCart([...items, { ...product, count: 1 }]));
+    dispatch(syncCart(updatedItems));
   };
   return (
     <div>

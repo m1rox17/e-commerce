@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import { auth } from "../../../firebase-config";
 
 const initialState = {
   items: [],
@@ -33,7 +34,13 @@ export const cartSlice = createSlice({
 export const { setCart, addItem, removeItem } = cartSlice.actions;
 
 export const fetchCart = () => async (dispatch) => {
-  const docRef = doc(db, "cart", "cart");
+  const user = auth.currentUser;
+  if (!user) {
+    console.log("Not user");
+    return;
+  }
+
+  const docRef = doc(db, "carts", user.uid);
   const docSnap = await getDoc(docRef);
 
   if (docSnap != "undefined") {
@@ -44,7 +51,13 @@ export const fetchCart = () => async (dispatch) => {
 };
 
 export const syncCart = (items) => async () => {
-  const docRef = doc(db, "cart", "cart");
+  const user = auth.currentUser;
+  if (!user) {
+    console.log("Not user");
+    return;
+  }
+
+  const docRef = doc(db, "carts", user.uid);
   await setDoc(docRef, { items });
 };
 

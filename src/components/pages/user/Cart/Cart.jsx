@@ -8,13 +8,19 @@ import {
   syncCart,
 } from "../../../../redux/Cart/cartSlice";
 
+import { auth } from "../../../../../firebase-config";
+
 export default function Cart() {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
   const [selectedValue, setSelectedValue] = useState("2");
 
   useEffect(() => {
-    dispatch(fetchCart());
+    if (auth.currentUser) {
+      dispatch(fetchCart());
+    } else {
+      console.error("User is not authenticated");
+    }
   }, [dispatch]);
 
   const handleRemoveItem = (id) => {
