@@ -9,14 +9,16 @@ import { MdOutlineArrowForward } from "react-icons/md";
 import products from "/src/data/products.json";
 import ProductsBlock from "../../../template/Products/ProductsBlock";
 
-import { useDispatch } from "react-redux";
-import { addItem } from "../../../../redux/Cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, syncCart } from "../../../../redux/Cart/cartSlice";
 
 export default function HomePage() {
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
 
-  const handleClick = (product) => {
+  const handleAddItem = (product) => {
     dispatch(addItem(product));
+    dispatch(syncCart([...items, { ...product, count: 1 }]));
   };
   return (
     <div>
@@ -89,7 +91,7 @@ export default function HomePage() {
                   star={product.star}
                 />
                 <button
-                  onClick={() => handleClick(product)}
+                  onClick={() => handleAddItem(product)}
                   className="col__button"
                 >
                   Add to cart

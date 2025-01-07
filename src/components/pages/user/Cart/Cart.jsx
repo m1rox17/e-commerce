@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Cart.scss";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCart,
+  removeItem,
+  syncCart,
+} from "../../../../redux/Cart/cartSlice";
 
 export default function Cart() {
+  const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
   const [selectedValue, setSelectedValue] = useState("2");
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
+
+  const handleRemoveItem = (id) => {
+    const updatedItems = items.filter((item) => item.id !== id);
+    dispatch(removeItem({ id }));
+    dispatch(syncCart(updatedItems));
+  };
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -24,7 +40,7 @@ export default function Cart() {
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr>
+              <tr key={item.id}>
                 <td>
                   <div className="product__info">
                     <img
@@ -32,6 +48,7 @@ export default function Cart() {
                       alt={item.name}
                       className="product__image"
                     />
+                    <button onClick={() => handleRemoveItem(item.id)}>x</button>
                     <h1>{item.name}</h1>
                   </div>
                 </td>
@@ -58,7 +75,12 @@ export default function Cart() {
 
         <div className="cart__actions">
           <button className="return__btn">Return To Shop</button>
-          <button className="update__btn">Update Cart</button>
+          <button
+            className="update__btn"
+            onClick={() => handleRemoveItem(items.id)}
+          >
+            Remove Item
+          </button>
         </div>
         <div className="cart__bottom">
           <div className="coupon__section">
