@@ -11,6 +11,10 @@ import ProductsBlock from "../../../template/Products/ProductsBlock";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, syncCart } from "../../../../redux/Cart/cartSlice";
+import {
+  addItemWishlist,
+  syncWishlist,
+} from "../../../../redux/Wishlist/wishlistSlice";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -20,6 +24,12 @@ export default function HomePage() {
     const updatedItems = [...items, { ...product, count: 1 }];
     dispatch(addItem(product));
     dispatch(syncCart(updatedItems));
+  };
+
+  const handleAddItemWishlist = (product) => {
+    const updatedItems = [...items, { ...product, count: 1 }];
+    dispatch(addItemWishlist(product));
+    dispatch(syncWishlist(updatedItems));
   };
   return (
     <div>
@@ -96,6 +106,9 @@ export default function HomePage() {
                   className="col__button"
                 >
                   Add to cart
+                </button>
+                <button onClick={() => handleAddItemWishlist(product)}>
+                  Like
                 </button>
               </div>
             ))}

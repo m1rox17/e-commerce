@@ -1,10 +1,36 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./wishlist.scss";
 
 import products from "/src/data/products.json";
 import ProductsBlock from "../../../template/Products/ProductsBlock";
 
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchWishlist,
+  removeItemWishlist,
+  syncWishlist,
+} from "../../../../redux/Wishlist/wishlistSlice";
+
+import { auth } from "../../../../../firebase-config";
+
 export default function Wishlist() {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.wishlist);
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      dispatch(fetchWishlist());
+    } else {
+      console.error("User is not authenticated");
+    }
+  }, [dispatch]);
+
+  const handleRemoveItem = (id) => {
+    const updatedItems = items.filter((item) => item.id !== id);
+    dispatch(removeItemWishlist({ id }));
+    dispatch(syncWishlist(updatedItems));
+  };
+
   return (
     <div>
       <div className="container">
@@ -13,15 +39,16 @@ export default function Wishlist() {
           <button>Move All To Bag</button>
         </div>
         <div className="product__row">
-          {products.products.map((product) => (
-            <div className="product__col">
+          {items.map((item) => (
+            <div key={item.id} className="product__col">
               <ProductsBlock
-                key={product.id}
-                img={product.img}
-                name={product.name}
-                price={product.price}
-                star={product.star}
+                key={item.id}
+                img={item.img}
+                name={item.name}
+                price={item.price}
+                star={item.star}
               />
+              <button onClick={() => handleRemoveItem(item.id)}>delete</button>
             </div>
           ))}
         </div>
