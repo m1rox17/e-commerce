@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { GrCart } from "react-icons/gr";
@@ -8,6 +6,7 @@ import { CiUser } from "react-icons/ci";
 
 import "./header.scss";
 import ModalAccount from "../../modal/ModalAccount";
+import { useState } from "react";
 
 export default function Header({ role }) {
   const [openModal, setOpenModal] = useState(false);
@@ -25,17 +24,37 @@ export default function Header({ role }) {
           <h1>Exclusive</h1>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <a href="#">Contact</a>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                Contact
+              </NavLink>
             </li>
             <li>
-              <a href="#">About</a>
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                About
+              </NavLink>
             </li>
             {role !== "user" && (
               <li>
-                <Link to="/authentication">Sign Up</Link>
+                <NavLink
+                  to="/authentication"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Sign Up
+                </NavLink>
               </li>
             )}
           </ul>
@@ -44,12 +63,18 @@ export default function Header({ role }) {
             <FiSearch className="searchbar-icon" />
           </div>
           <div>
-            <Link to="/wishlist">
+            <NavLink
+              to="/wishlist"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               <IoIosHeartEmpty size={24} />
-            </Link>
-            <Link to="/cart">
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
               <GrCart className="cart-icon" size={24} />
-            </Link>
+            </NavLink>
             {role === "user" && (
               <CiUser
                 size={24}

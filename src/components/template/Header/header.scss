@@ -37,11 +37,32 @@ nav {
   }
   ul li {
     margin-right: 40px;
-    a {
-      text-decoration: none;
-      color: #000;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+    position: relative;
+
+    &.inactive::after {
+      content: "✖";
+      color: $red;
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      display: none;
+    }
+
+    &.inactive:hover::after {
+      display: inline;
     }
   }
+
   .searchbar {
     display: flex;
     position: relative;
