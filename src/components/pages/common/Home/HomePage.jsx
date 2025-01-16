@@ -2,8 +2,8 @@ import React from "react";
 import "./home.scss";
 
 import { FaApple } from "react-icons/fa";
-import { IoArrowBackCircle } from "react-icons/io5";
-import { IoArrowForwardCircle } from "react-icons/io5";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoEyeOutline } from "react-icons/io5";
 import { MdOutlineArrowForward } from "react-icons/md";
 
 import products from "/src/data/products.json";
@@ -87,10 +87,6 @@ export default function HomePage() {
           <h1 className="product__our">Our Product</h1>
           <div className="header__product">
             <h1>Explore Our Products</h1>
-            <div>
-              <IoArrowBackCircle className="product__icon" size={46} />{" "}
-              <IoArrowForwardCircle className="product__icon" size={46} />
-            </div>
           </div>
           <div className="product__row">
             {products.products.map((product) => (
@@ -107,8 +103,17 @@ export default function HomePage() {
                 >
                   Add to cart
                 </button>
-                <button onClick={() => handleAddItemWishlist(product)}>
-                  Like
+                <button
+                  onClick={() => handleAddItemWishlist(product)}
+                  className="col__like"
+                >
+                  <IoIosHeartEmpty />
+                </button>
+                <button
+                  onClick={() => console.log("View product:", product.id)}
+                  className="col__view"
+                >
+                  <IoEyeOutline />
                 </button>
               </div>
             ))}
