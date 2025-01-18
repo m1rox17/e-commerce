@@ -54,12 +54,17 @@ export default function Cart() {
                       alt={item.name}
                       className="product__image"
                     />
-                    <button onClick={() => handleRemoveItem(item.id)}>x</button>
+                    <button
+                      onClick={() => handleRemoveItem(item.id)}
+                      className="product__btn"
+                    >
+                      X
+                    </button>
                     <h1>{item.name}</h1>
                   </div>
                 </td>
                 <td>
-                  <h1 className="product__price">${item.price}</h1>
+                  <h1 className="product__value">${item.price}</h1>
                 </td>
                 <td>
                   <select
@@ -72,13 +77,11 @@ export default function Cart() {
                     <option value="3">03</option>
                   </select>
                 </td>
-                <td>$650</td>
+                <td>${item.price.setSelectedValue}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <hr />
-
         <div className="cart__actions">
           <button className="return__btn">Return To Shop</button>
           <button
