@@ -19,6 +19,7 @@ import {
 export default function HomePage() {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
+  const { itemsWishlist } = useSelector((state) => state.wishlist);
 
   const handleAddItem = (product) => {
     const updatedItems = [...items, { ...product, count: 1 }];
@@ -27,7 +28,7 @@ export default function HomePage() {
   };
 
   const handleAddItemWishlist = (product) => {
-    const updatedItems = [...items, { ...product, count: 1 }];
+    const updatedItems = [...itemsWishlist, { ...product, count: 1 }];
     dispatch(addItemWishlist(product));
     dispatch(syncWishlist(updatedItems));
   };

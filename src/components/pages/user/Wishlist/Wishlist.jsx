@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./wishlist.scss";
 
-import products from "/src/data/products.json";
 import ProductsBlock from "../../../template/Products/ProductsBlock";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +14,7 @@ import { auth } from "../../../../../firebase-config";
 
 export default function Wishlist() {
   const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.wishlist);
+  const { itemsWishlist } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     if (auth.currentUser) {
@@ -26,7 +25,7 @@ export default function Wishlist() {
   }, [dispatch]);
 
   const handleRemoveItem = (id) => {
-    const updatedItems = items.filter((item) => item.id !== id);
+    const updatedItems = itemsWishlist.filter((item) => item.id !== id);
     dispatch(removeItemWishlist({ id }));
     dispatch(syncWishlist(updatedItems));
   };
@@ -39,7 +38,7 @@ export default function Wishlist() {
           <button>Move All To Bag</button>
         </div>
         <div className="product__row">
-          {items.map((item) => (
+          {itemsWishlist.map((item) => (
             <div key={item.id} className="product__col">
               <ProductsBlock
                 key={item.id}
