@@ -5,6 +5,8 @@ $red: #db4444;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 60px;
+
   h1 {
     font-size: 20px;
     font-weight: 400;
@@ -32,8 +34,8 @@ $red: #db4444;
   justify-content: center;
   display: flex;
   background-color: #f5f5f5;
-  width: 200px;
-  height: 200px;
+  width: 320px;
+  height: 250px;
 }
 
 .product__img {
@@ -56,11 +58,68 @@ $red: #db4444;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 950px;
+  max-width: 1450px;
   margin: auto;
 }
 .product__col {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
+  align-items: center;
+  width: 320px;
+  margin-bottom: 30px;
+  margin-right: 20px;
+
+  &:hover .col__button {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.col__button {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 10px 0;
+  background-color: black;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-end-start-radius: 4px;
+  border-end-end-radius: 4px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $red;
+  }
+}
+
+.col__trash {
+}
+
+.col__trash {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.col__trash:hover {
+  background-color: #db4444;
+  color: white;
 }

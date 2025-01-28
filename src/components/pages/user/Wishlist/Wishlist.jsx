@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./wishlist.scss";
 
 import ProductsBlock from "../../../template/Products/ProductsBlock";
+import { addItem, syncCart } from "../../../../redux/Cart/cartSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,8 +13,11 @@ import {
 
 import { auth } from "../../../../../firebase-config";
 
+import { BsTrash3 } from "react-icons/bs";
+
 export default function Wishlist() {
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
   const { itemsWishlist } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
@@ -28,6 +32,12 @@ export default function Wishlist() {
     const updatedItems = itemsWishlist.filter((item) => item.id !== id);
     dispatch(removeItemWishlist({ id }));
     dispatch(syncWishlist(updatedItems));
+  };
+
+  const handleAddItem = (product) => {
+    const updatedItems = [...items, { ...product, count: 1 }];
+    dispatch(addItem(product));
+    dispatch(syncCart(updatedItems));
   };
 
   return (
@@ -47,7 +57,18 @@ export default function Wishlist() {
                 price={item.price}
                 star={item.star}
               />
-              <button onClick={() => handleRemoveItem(item.id)}>delete</button>
+              <button
+                onClick={() => handleRemoveItem(item.id)}
+                className="col__trash"
+              >
+                <BsTrash3 />
+              </button>
+              <button
+                onClick={() => handleAddItem(item)}
+                className="col__button"
+              >
+                Add to cart
+              </button>
             </div>
           ))}
         </div>
