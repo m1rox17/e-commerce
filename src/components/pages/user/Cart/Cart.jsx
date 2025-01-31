@@ -6,6 +6,8 @@ import {
   fetchCart,
   removeItem,
   syncCart,
+  toatalItemsPrice,
+  updateItem,
 } from "../../../../redux/Cart/cartSlice";
 
 import { auth } from "../../../../../firebase-config";
@@ -13,7 +15,7 @@ import { auth } from "../../../../../firebase-config";
 export default function Cart() {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
-  const [selectedValue, setSelectedValue] = useState("2");
+  const total = useSelector(toatalItemsPrice);
 
   useEffect(() => {
     if (auth.currentUser) {
@@ -23,15 +25,21 @@ export default function Cart() {
     }
   }, [dispatch]);
 
+  const handleUpdateItem = (id, count) => {
+    dispatch(updateItem({ id, count }));
+    dispatch(
+      syncCart(
+        items.map((item) => (item.id === id ? { ...item, count } : item))
+      )
+    );
+  };
+
   const handleRemoveItem = (id) => {
     const updatedItems = items.filter((item) => item.id !== id);
     dispatch(removeItem({ id }));
     dispatch(syncCart(updatedItems));
   };
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
   return (
     <div className="cart">
       <div className="container">
@@ -69,15 +77,17 @@ export default function Cart() {
                 <td>
                   <select
                     className="quantity__select"
-                    value={selectedValue}
-                    onChange={handleChange}
+                    value={item.count}
+                    onChange={(event) =>
+                      handleUpdateItem(item.id, Number(event.target.value))
+                    }
                   >
                     <option value="1">01</option>
                     <option value="2">02</option>
                     <option value="3">03</option>
                   </select>
                 </td>
-                <td>${item.price.setSelectedValue}</td>
+                <td>${item.price * item.count}</td>
               </tr>
             ))}
           </tbody>
@@ -103,7 +113,7 @@ export default function Cart() {
           <div className="cart__total">
             <h3>Cart Total</h3>
             <p>
-              <span>Subtotal:</span> <span>$1750</span>
+              <span>Subtotal:</span> <span>${total}</span>
             </p>
             <hr />
             <p>
@@ -111,7 +121,7 @@ export default function Cart() {
             </p>
             <hr />
             <p>
-              <span>Total:</span> <span>$1750</span>
+              <span>Total:</span> <span>${total}</span>
             </p>
             <button className="checkout__btn">Proceed to checkout</button>
           </div>

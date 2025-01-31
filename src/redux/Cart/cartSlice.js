@@ -20,18 +20,31 @@ export const cartSlice = createSlice({
       );
 
       if (findItem) {
-        findItem.cound++;
+        findItem.count++;
       } else {
         state.items.push({ ...action.payload, count: 1 });
       }
     },
+    updateItem(state, action) {
+      const findItem = state.items.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (findItem) {
+        findItem.count = action.payload.count;
+      }
+     },
     removeItem(state, action) {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
   },
 });
 
-export const { setCart, addItem, removeItem } = cartSlice.actions;
+export const { setCart, addItem, removeItem, updateItem } = cartSlice.actions;
+
+export const toatalItemsPrice = (state) => {
+  return state.cart.items.reduce((acc, item) => acc + item.count * item.price, 0);
+}
 
 export const fetchCart = () => async (dispatch) => {
   const user = auth.currentUser;
