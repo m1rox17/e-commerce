@@ -7,8 +7,9 @@ import { CiUser } from "react-icons/ci";
 import "./header.scss";
 import ModalAccount from "../../modal/ModalAccount";
 import { useState } from "react";
+import ProductsBlock from "../Products/ProductsBlock";
 
-export default function Header({ role }) {
+export default function Header({ role, searchValue, setSearchValue }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -59,8 +60,15 @@ export default function Header({ role }) {
             )}
           </ul>
           <div className="searchbar">
-            <input type="text" placeholder="What are you looking for?" />
-            <FiSearch className="searchbar-icon" />
+            <input
+              type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="What are you looking for?"
+            />
+            <NavLink to="/search">
+              <FiSearch className="searchbar-icon" />
+            </NavLink>
           </div>
           <div>
             <NavLink

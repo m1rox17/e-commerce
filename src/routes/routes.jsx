@@ -11,8 +11,9 @@ import NotFound from "../components/pages/common/NotFound/NotFound";
 import ProductDetails from "../components/template/ProductDetails/ProductDetails";
 import Cart from "../components/pages/user/Cart/Cart";
 import Checkout from "../components/pages/user/CheckOut/CheckOut";
+import Search from "../components/pages/common/Search/Search";
 
-export const useRoleBasedRoutes = () => {
+export const useRoleBasedRoutes = ({ searchValue, setSearchValue }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -40,10 +41,25 @@ export const useRoleBasedRoutes = () => {
     return [
       {
         path: "/",
-        element: <Layout role="user" />,
+        element: (
+          <Layout
+            role="user"
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        ),
         errorElement: <NotFound />,
         children: [
-          { path: "/", element: <HomePage /> },
+          {
+            path: "/",
+            element: (
+              <HomePage
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
+            ),
+          },
+          { path: "search", element: <Search searchValue={searchValue} /> },
           { path: "wishlist", element: <Wishlist /> },
           { path: "product", element: <ProductDetails /> },
           { path: "cart", element: <Cart /> },
@@ -56,10 +72,24 @@ export const useRoleBasedRoutes = () => {
     return [
       {
         path: "/",
-        element: <Layout role="guest" />,
+        element: (
+          <Layout
+            role="guest"
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+        ),
         errorElement: <NotFound />,
         children: [
-          { path: "/", element: <HomePage /> },
+          {
+            path: "/",
+            element: (
+              <HomePage
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+              />
+            ),
+          },
           { path: "authentication", element: <Authentication /> },
         ],
       },

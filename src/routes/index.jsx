@@ -1,8 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useState } from "react";
 import { useRoleBasedRoutes } from "./routes";
 
 export const MyAppRouter = () => {
-  const routerList = useRoleBasedRoutes();
+  const [searchValue, setSearchValue] = useState("");
+
+  const routerList = useRoleBasedRoutes({ searchValue, setSearchValue });
 
   if (!routerList) {
     return <div></div>;
