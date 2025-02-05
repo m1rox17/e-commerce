@@ -1,28 +1,43 @@
 import React from "react";
 import "./product.scss";
 
+import products from "/src/data/products.json";
+
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdFindReplace } from "react-icons/md";
+import { FaStar } from "react-icons/fa";
+
+import { useParams } from "react-router-dom";
 
 export default function ProductDetails() {
+  const { id } = useParams();
+  const product = products.products.find((item) => item.id == id);
+
+  if (!product) {
+    return <h1>Product not found</h1>;
+  }
+
+  const maxStars = 5;
+
   return (
     <div className="container">
       <div className="product__details">
         <div className="product__image">
-          <img src="/src/img/Havic.png" alt="Havic HV G-92 Gamepad" />
+          <img src={product.imgDetail} alt={product.name} />
         </div>
         <div className="product__info">
-          <h1>Havic HV G-92 Gamepad</h1>
+          <h1>{product.name}</h1>
           <div className="product__rating">
-            <span>⭐️⭐️⭐️⭐️⭐️</span>
-            <h1>(150 Reviews)</h1>
+            {[...Array(maxStars)].map((_, index) => (
+              <FaStar
+                key={index}
+                color={index < product.star ? "gold" : "lightgray"}
+              />
+            ))}
+            <h1>{product.reviews}</h1>
           </div>
-          <h2 className="product__price">$192.00</h2>
-          <p>
-            PlayStation 5 Controller Skin High quality vinyl with air channel
-            adhesive for easy bubble-free install & mess-free removal. Pressure
-            sensitive.
-          </p>
+          <h2 className="product__price">${product.price}</h2>
+          <p>{product.description}</p>
           <hr />
           <div className="product__options">
             <div className="product__quantity">

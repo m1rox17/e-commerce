@@ -93,6 +93,7 @@ export default function HomePage() {
             {products.products.map((product) => (
               <div className="product__col" key={product.id}>
                 <ProductsBlock
+                  id={product.id}
                   img={product.img}
                   name={product.name}
                   price={product.price}

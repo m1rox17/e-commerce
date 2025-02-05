@@ -3,58 +3,82 @@
     {
       "id": 0,
       "img": "/src/img/DogFood.png",
+      "imgDetail": "/src/img/DogFoodDetail.png",
       "name": "Breed Dry Dog Food",
       "price": 100,
-      "star": 3
+      "star": 3,
+      "description": "A nutritious dry dog food blend designed to support your pet’s health.",
+      "reviews": 192
     },
     {
       "id": 1,
       "img": "/src/img/Camera.png",
+      "imgDetail": "/src/img/CameraDetail.png",
       "name": "CANON EOS DSLR Camera",
       "price": 360,
-      "star": 4
+      "star": 4,
+      "description": "Capture stunning photos with this high-quality DSLR camera from Canon.",
+      "reviews": 85
     },
     {
       "id": 2,
       "img": "/src/img/Laptop.png",
+      "imgDetail": "/src/img/LaptopDetail.png",
       "name": "ASUS FHD Gaming Laptop",
       "price": 700,
-      "star": 5
+      "star": 5,
+      "description": "A powerful gaming laptop with a Full HD display for smooth performance.",
+      "reviews": 214
     },
     {
       "id": 3,
       "img": "/src/img/Curology.png",
-      "name": "Curology Product Set ",
+      "imgDetail": "/src/img/CurologyDetail.png",
+      "name": "Curology Product Set",
       "price": 500,
-      "star": 4
+      "star": 4,
+      "description": "A personalized skincare set tailored to your skin’s needs.",
+      "reviews": 143
     },
     {
       "id": 4,
       "img": "/src/img/Car.png",
+      "imgDetail": "/src/img/CarDetail.png",
       "name": "Kids Electric Car",
       "price": 960,
-      "star": 5
+      "star": 5,
+      "description": "A fun and safe electric ride-on car for kids with realistic features.",
+      "reviews": 99
     },
     {
       "id": 5,
       "img": "/src/img/Cleats.png",
+      "imgDetail": "/src/img/CleatsDetail.png",
       "name": "Jr. Zoom Soccer Cleats",
       "price": 1160,
-      "star": 5
+      "star": 5,
+      "description": "High-performance soccer cleats designed for speed and agility.",
+      "reviews": 207
     },
     {
       "id": 6,
       "img": "/src/img/Gamepad.png",
+      "imgDetail": "/src/img/GamepadDetail.png",
       "name": "GP11 Shooter USB Gamepad",
       "price": 660,
-      "star": 4
+      "star": 4,
+      "description": "An ergonomic USB gamepad for a seamless gaming experience.",
+      "reviews": 178
     },
     {
       "id": 7,
       "img": "/src/img/Jacket.png",
+      "imgDetail": "/src/img/JacketDetail.png",
       "name": "Quilted Satin Jacket",
       "price": 660,
-      "star": 4
+      "star": 4,
+      "description": "A stylish and warm quilted satin jacket for any occasion.",
+      "reviews": 134
     }
   ]
 }

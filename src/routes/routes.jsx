@@ -60,6 +60,7 @@ export const useRoleBasedRoutes = ({ searchValue, setSearchValue }) => {
             ),
           },
           { path: "search", element: <Search searchValue={searchValue} /> },
+          { path: "product/:id", element: <ProductDetails /> },
           { path: "wishlist", element: <Wishlist /> },
           { path: "product", element: <ProductDetails /> },
           { path: "cart", element: <Cart /> },
