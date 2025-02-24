@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./check.scss";
 
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../../../../../firebase-config";
+import { fetchCart, toatalItemsPrice } from "../../../../redux/Cart/cartSlice";
+
 export default function CheckOut() {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
+  const total = useSelector(toatalItemsPrice);
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      dispatch(fetchCart());
+    } else {
+      console.error("User is not authenticated");
+    }
+  }, [dispatch]);
+
   return (
     <div className="container">
       <div className="checkout">
-        {" "}
         <div className="checkout__billing">
           <h2>Billing Details</h2>
           <form className="billing__form">
@@ -47,26 +62,23 @@ export default function CheckOut() {
         </div>
         <div className="checkout__summary">
           <div className="summary__items">
-            <div className="item">
-              <img src="" alt="LCD Monitor" />
-              <p>LCD Monitor</p>
-              <span>$650</span>
-            </div>
-            <div className="item">
-              <img src="gamepad.png" alt="H1 Gamepad" />
-              <p>H1 Gamepad</p>
-              <span>$1100</span>
-            </div>
+            {items.map((item) => (
+              <div className="item" key={item.id}>
+                <img src={item.img} alt={item.name} />
+                <p>{item.name}</p>
+                <span>${item.price}</span>
+              </div>
+            ))}
           </div>
           <div className="summary__totals">
             <p>
-              Subtotal: <span>$1750</span>
+              Subtotal: <span>${total}</span>
             </p>
             <p>
               Shipping: <span>Free</span>
             </p>
             <p>
-              Total: <span>$1750</span>
+              Total: <span>${total}</span>
             </p>
           </div>
           <div className="payment__options">
