@@ -14,3 +14,12 @@ footer {
     }
   }
 }
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+}

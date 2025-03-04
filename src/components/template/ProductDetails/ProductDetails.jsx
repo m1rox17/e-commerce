@@ -20,7 +20,7 @@ export default function ProductDetails() {
   const maxStars = 5;
 
   return (
-    <div className="container">
+    <div className="content">
       <div className="product__details">
         <div className="product__image">
           <img src={product.imgDetail} alt={product.name} />

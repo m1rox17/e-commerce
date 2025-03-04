@@ -1,6 +1,7 @@
 .sign {
   display: flex;
   align-items: center;
+  padding: 1rem 10rem;
   .sign__right {
     margin: auto;
     h1 {
@@ -38,5 +39,11 @@
         color: #fff;
       }
     }
+  }
+}
+
+@media (max-width: 992px) {
+  .sign {
+    flex-direction: column-reverse;
   }
 }

@@ -200,3 +200,60 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .cart {
+    &__table {
+      th,
+      td {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+
+    .cart__bottom {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .coupon__section {
+      flex-direction: column;
+
+      .coupon__input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cart {
+      &__table {
+        th,
+        td {
+          font-size: 12px;
+          padding: 8px;
+        }
+      }
+
+      &__actions {
+        flex-direction: column;
+        gap: 5px;
+
+        .return__btn,
+        .update__btn {
+          width: 100%;
+        }
+      }
+
+      .cart__total {
+        width: 100%;
+        padding: 10px;
+      }
+
+      .checkout__btn {
+        width: 100%;
+      }
+    }
+  }
+}

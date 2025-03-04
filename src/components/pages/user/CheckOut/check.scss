@@ -156,3 +156,41 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .checkout {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+
+    &__billing {
+      h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+      }
+    }
+
+    &__summary {
+      width: 100%;
+
+      .summary__items .item {
+        img {
+          width: 40px;
+          height: 40px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .summary__totals p {
+        font-size: 14px;
+      }
+
+      .place__order {
+        font-size: 14px;
+      }
+    }
+  }
+}

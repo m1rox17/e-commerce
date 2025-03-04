@@ -13,7 +13,7 @@ export default function Header({ role, searchValue, setSearchValue }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div>
+    <nav className="nav">
       <header>
         <h1>
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
@@ -70,7 +70,7 @@ export default function Header({ role, searchValue, setSearchValue }) {
               <FiSearch className="searchbar-icon" />
             </NavLink>
           </div>
-          <div>
+          <div className="icons">
             <NavLink
               to="/wishlist"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -94,6 +94,6 @@ export default function Header({ role, searchValue, setSearchValue }) {
           </div>
         </nav>
       </div>
-    </div>
+    </nav>
   );
 }

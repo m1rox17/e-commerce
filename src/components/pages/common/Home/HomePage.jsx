@@ -33,10 +33,10 @@ export default function HomePage() {
     dispatch(syncWishlist(updatedItems));
   };
   return (
-    <div>
-      <div className="container">
+    <main className="content">
+      <div>
         <div className="intro">
-          <div>
+          <div className="intro__categories">
             <ul>
               <li>
                 <a href="#">Woman’s Fashion</a>
@@ -85,8 +85,8 @@ export default function HomePage() {
       </div>
       <div className="container">
         <div className="product">
-          <h1 className="product__our">Our Product</h1>
           <div className="header__product">
+            <h1 className="product__our">Our Product</h1>
             <h1>Explore Our Products</h1>
           </div>
           <div className="product__row">
@@ -123,6 +123,6 @@ export default function HomePage() {
           <button className="product__button">View All Products</button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
