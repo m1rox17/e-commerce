@@ -7,7 +7,6 @@ import { CiUser } from "react-icons/ci";
 import "./header.scss";
 import ModalAccount from "../../modal/ModalAccount";
 import { useState } from "react";
-import ProductsBlock from "../Products/ProductsBlock";
 
 export default function Header({ role, searchValue, setSearchValue }) {
   const [openModal, setOpenModal] = useState(false);
