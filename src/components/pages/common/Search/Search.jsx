@@ -15,7 +15,7 @@ export default function Search({ searchValue }) {
         {handleSearch().map((product) => (
           <div className="product__col">
             <ProductsBlock
-              key={product.id}
+              id={product.id}
               img={product.img}
               name={product.name}
               price={product.price}

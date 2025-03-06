@@ -11,7 +11,11 @@ export default function ProductsBlock({ id, img, name, price, star }) {
         <img className="product__img" src={img} alt={name} />
       </div>
       <div>
-        <NavLink className="product__link" to={`/product/${id}`}>
+        <NavLink
+          className="product__link"
+          to={`/product/${id}`}
+          target="_blank"
+        >
           <h1 className="product__title">{name}</h1>
         </NavLink>
         <div className="product__subtitle">
