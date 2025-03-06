@@ -55,6 +55,24 @@ $red: #db4444;
       color: #000;
       position: relative;
     }
+    a.inactive {
+      position: relative;
+
+      &::after {
+        content: "✖";
+        color: $red;
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        display: none;
+      }
+
+      &:hover::after {
+        display: block;
+      }
+    }
 
     .searchbar {
       display: flex;

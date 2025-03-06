@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./cart.scss";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import {
 } from "../../../../redux/Cart/cartSlice";
 
 import { auth } from "../../../../../firebase-config";
+import { NavLink } from "react-router-dom";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -38,6 +39,11 @@ export default function Cart() {
     const updatedItems = items.filter((item) => item.id !== id);
     dispatch(removeItem({ id }));
     dispatch(syncCart(updatedItems));
+  };
+
+  const handleClearCart = () => {
+    items.forEach((item) => dispatch(removeItem({ id: item.id })));
+    dispatch(syncCart([]));
   };
 
   return (
@@ -93,11 +99,11 @@ export default function Cart() {
           </tbody>
         </table>
         <div className="cart__actions">
-          <button className="return__btn">Return To Shop</button>
-          <button
-            className="update__btn"
-            onClick={() => handleRemoveItem(items.id)}
-          >
+          <NavLink to="/">
+            <button className="return__btn">Return To Shop</button>
+          </NavLink>
+
+          <button className="update__btn" onClick={handleClearCart}>
             Remove Item
           </button>
         </div>
@@ -123,7 +129,9 @@ export default function Cart() {
             <p>
               <span>Total:</span> <span>${total}</span>
             </p>
-            <button className="checkout__btn">Proceed to checkout</button>
+            <NavLink to="/checkout">
+              <button className="checkout__btn">Proceed to checkout</button>
+            </NavLink>
           </div>
         </div>
       </div>
