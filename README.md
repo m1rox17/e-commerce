@@ -1,19 +1,38 @@
-## E-commerce
+## 🛒 E-Commerce Site (React.js)
+### [Live demo](https://www.google.com/)
 <img src="https://i.ibb.co/LXps7m9m/img.png" alt="demo"/>
 
-## About
-<p></p>
+<p>A modern e-commerce website built with React.js, featuring product listings, filtering, cart management, and user authentication. Optimized for performance and a seamless shopping experience. 🚀</p>
 
 ## Technologies Used
 
-<p></p>
+* React Js
+* Redux Toolkit
+* Firebase
+* React Router
+* SCSS
+* Vite
 
-## How to Use
+## Features
 
-<p>1.Clone the repository. <br/>
-2.Open the project in your preferred code editor.<br/>
-3.Customize the content, images, and styles as per your requirements.<br/>
-4.Preview the layout by opening the index.html file in your web browser.<br/>
-5.Deploy the project to a web server or hosting platform of your choice.</p>
+* CRUD operations
+* Firebase authentication
+* Firebase auth provider authentication
+* Account creation 
 
-<p>Or follow the link: </p>
+## Run Locally
+
+### 1) First Clone this project:
+
+`git clone https://github.com/ManiruzzamanAkash/react-calculator.git`
+
+### 2) Install node modules:
+
+`npm install`
+
+### 3) Run this project in browser
+
+`npm start`
+
+### 4) Build And Run this project in browser
+`npm run build`
