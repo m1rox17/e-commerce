@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import { useState } from "react";
 import { useRoleBasedRoutes } from "./routes";
 
@@ -11,7 +11,7 @@ export const MyAppRouter = () => {
     return <div></div>;
   }
 
-  const router = createBrowserRouter(routerList);
+  const router = createHashRouter(routerList);
 
   return <RouterProvider router={router} />;
 };
